@@ -13,3 +13,25 @@ void Update()
     }
 }
 ```
+
+<p dir="rtl">השלב הבא היה למצוא מהו הצד העליון. לשם כך נעזרנו בתכונה Vector3.up</p>
+
+```csharp
+// בדיקה אחרי שהקוביה נחתה, מה הצד העליון
+void WhichSideUp()
+{
+    if (Vector3.Dot(-transform.up, Vector3.up) > 0.6f)
+        diceCount = 1;
+    if (Vector3.Dot(transform.forward, Vector3.up) > 0.6f)
+        diceCount = 2;
+    if (Vector3.Dot(transform.up, Vector3.up) > 0.6f)
+        diceCount = 3;
+    if (Vector3.Dot(-transform.forward, Vector3.up) > 0.6f)
+        diceCount = 4;
+    if (Vector3.Dot(transform.right, Vector3.up) > 0.6f)
+        diceCount = 5;
+    if (Vector3.Dot(-transform.right, Vector3.up) > 0.6f)
+        diceCount = 6;
+    Debug.Log("up = " + diceCount);
+}
+```
